@@ -1,0 +1,12 @@
+function toSnakeCase(input) {
+    if (input == null) return '';
+    return String(input)
+        .normalize('NFKD')                      
+        .replace(/[\u0300-\u036f]/g, '')        
+        .replace(/([a-z0-9])([A-Z])/g, '$1_$2') 
+        .replace(/[\s\-\+\.\/]+/g, '_')         
+        .replace(/[^A-Za-z0-9_]+/g, '')         
+        .replace(/_+/g, '_')                    
+        .replace(/^_|_$/g, '')                  
+        .toLowerCase();
+}
